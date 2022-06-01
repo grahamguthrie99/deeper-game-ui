@@ -16,12 +16,15 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { AuthContext } from "../../session/AuthContext";
 
 const theme = createTheme();
 
 const AddQuestionForm = ({ history }) => {
     const firebase = useContext(FirebaseContext);
-    const [errors, setErrors] = useState(""); 
+    const { authState } = useContext(AuthContext);
+
+    // const [errors, setErrors] = useState(""); 
     const [type, setType] = useState('');
 
     const handleTypeChange = (e) => {
@@ -34,15 +37,17 @@ const AddQuestionForm = ({ history }) => {
         
         try {
             const docRef = await addDoc(collection(firebase.db, "questions"), {
-              type: data.get("question-type"),
+              type: parseInt(data.get("question-type")),
               restricted: data.get("restricted") ? true : false,
-              text: data.get("text")
+              text: data.get("text"),
+              asked: 0,
+              uid : authState.user.uid
             });
             console.log("Document written with ID: ", docRef.id);
             history.push("/dashboard");
         } catch (e) {
             console.error("Error adding document: ", e);
-            setErrors(e)
+            // setErrors(e)
         }
 
     }

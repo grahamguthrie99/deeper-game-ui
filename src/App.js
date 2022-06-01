@@ -5,7 +5,7 @@ import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import { Header } from "./components/Header/Header";
 import AddQuestionForm from "./components/Forms/AddQuestionForm";
-import QuestionList from "./pages/QuestionList";
+import QuestionList from "./components/Lists/QuestionList";
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <AuthenticatedRoute exact path="/dashboard" component={Dashboard} />
           <AuthenticatedRoute exact path="/addQuestion" component={AddQuestionForm} />
-          <AuthenticatedRoute exact path="/question" component={QuestionList} />
+          <AuthenticatedRoute exact path="/questions" component={QuestionList} />
       </Switch>
     </div>
   )

@@ -45,9 +45,9 @@ const Dashboard = (props) => {
                 <Link to="/addQuestion">
                     <Button variant="contained">Add a Question</Button>
                 </Link>
-                {/* <Link to="/questions"> */}
+                <Link to="/questions">
                     <Button disabled variant="outlined">View Question List</Button>
-                {/* </Link> */}
+                </Link>
               
               
             </Stack>
