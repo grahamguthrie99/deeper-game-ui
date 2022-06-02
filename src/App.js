@@ -6,6 +6,9 @@ import Dashboard from "./pages/Dashboard";
 import { Header } from "./components/Header/Header";
 import AddQuestionForm from "./components/Forms/AddQuestionForm";
 import QuestionList from "./components/Lists/QuestionList";
+import Game from "./pages/Game";
+import Rules from "./pages/Rules";
+import NotFound from "./pages/NotFound";
 
 function App() {
 
@@ -14,9 +17,12 @@ function App() {
       <Header />
       <Switch>
           <Route exact path="/" component={Landing} />
-          <AuthenticatedRoute exact path="/dashboard" component={Dashboard} />
-          <AuthenticatedRoute exact path="/addQuestion" component={AddQuestionForm} />
+          <AuthenticatedRoute exact path="/home" component={Dashboard} />
+          <AuthenticatedRoute exact path="/question" component={AddQuestionForm} />
           <AuthenticatedRoute exact path="/questions" component={QuestionList} />
+          <AuthenticatedRoute exact path="/game" component={Game} />
+          <AuthenticatedRoute exact path="/rules" component={Rules} />
+          <Route path="*" component={NotFound} />
       </Switch>
     </div>
   )

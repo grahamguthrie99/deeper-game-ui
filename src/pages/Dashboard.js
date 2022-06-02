@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
@@ -31,25 +31,23 @@ const Dashboard = (props) => {
               color="text.primary"
               gutterBottom
             >
-              Game Under Development 
+              Time to get Deeper.  
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Add a question to build the pool of potential game questions. Or View the list of existing questions. 
+               Deeper is the game designed to help you form stronger bonds with any of your friends. 
+            </Typography>
+            <Typography variant="p" align="center" color="text.secondary" paragraph>
+               Read the rules before you begin. Deeper can be played in any group setting. Have one person from your group kick the game off and follow the rabbit hole from there.  
             </Typography>
             <Stack
               sx={{ pt: 4 }}
-              direction="row"
               spacing={2}
               justifyContent="center"
             >
-                <Link to="/addQuestion">
-                    <Button variant="contained">Add a Question</Button>
-                </Link>
-                <Link to="/questions">
-                    <Button disabled variant="outlined">View Question List</Button>
-                </Link>
-              
-              
+                
+                <Button component={RouterLink} to={"/question"} disabled variant="contained" color='primary'>Start a Game</Button>
+                <Button component={RouterLink} to={"/question"} disabled variant="contained" color='secondary'>Join a Game</Button>
+                <Button component={RouterLink} to={"/question"} disabled variant="outlined" color="info">View Rules</Button>  
             </Stack>
           </Container>
         </Box>

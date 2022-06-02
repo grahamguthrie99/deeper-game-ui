@@ -8,7 +8,6 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
@@ -17,6 +16,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AuthContext } from "../../session/AuthContext";
+import AddIcon from '@mui/icons-material/Add';
 
 const theme = createTheme();
 
@@ -65,7 +65,7 @@ const AddQuestionForm = ({ history }) => {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+            <AddIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Add a Question

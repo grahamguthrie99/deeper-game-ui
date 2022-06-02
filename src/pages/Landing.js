@@ -8,6 +8,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import SkeletonPage from "../components/Loading/SkeletonPage";
 
 const theme = createTheme();
 
@@ -19,7 +20,7 @@ const Landing = ({ history }) => {
   async function onSubmit() {
     try {
       await actions.login();
-      history.push("/dashboard");
+      history.push("/home");
     } catch (e) {
       console.log(e);
       const errors = {};
@@ -28,7 +29,7 @@ const Landing = ({ history }) => {
   }
 
   return loading ? (
-    <div>Loading...</div>
+    <SkeletonPage />
   ) : (
     <ThemeProvider theme={theme}>
     <Container component="main" maxWidth="xs">
