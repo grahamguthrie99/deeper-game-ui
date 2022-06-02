@@ -9,7 +9,7 @@ export const QuestionTypes = {
     1 : "Would You Rather",
     2 : "Debate",
     3 : "Top 5",
-    4 : "Anonomous Answer",
+    4 : "Anonymous Answer",
     5 : "Mini Game",
     6 : "Hypothetical",
   };

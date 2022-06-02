@@ -44,7 +44,7 @@ const AddQuestionForm = ({ history }) => {
               uid : authState.user.uid
             });
             console.log("Document written with ID: ", docRef.id);
-            history.push("/dashboard");
+            history.push("/questions");
         } catch (e) {
             console.error("Error adding document: ", e);
             // setErrors(e)
