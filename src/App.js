@@ -20,7 +20,7 @@ function App() {
           <AuthenticatedRoute exact path="/home" component={Dashboard} />
           <AuthenticatedRoute exact path="/question" component={AddQuestionForm} />
           <AuthenticatedRoute exact path="/questions" component={QuestionList} />
-          <AuthenticatedRoute exact path="/game" component={Game} />
+          <AuthenticatedRoute path="/game/:id" children={<Game />} />
           <AuthenticatedRoute exact path="/rules" component={Rules} />
           <Route path="*" component={NotFound} />
       </Switch>

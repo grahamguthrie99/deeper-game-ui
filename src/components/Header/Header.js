@@ -15,11 +15,10 @@ import MenuItem from '@mui/material/MenuItem';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 const pages = [
-    { name: 'Start a Game', ref: "/game"},
+    { name: 'Play the Game', ref: "/home"},
     { name :  'Rules', ref: "/rules"}, 
     { name: "Add a Question", ref : "/question" },
     { name: 'View All Questions', ref : "/questions" },
-    { name: 'Home', ref : "/home" }
 ];
 
 export const Header = () => {

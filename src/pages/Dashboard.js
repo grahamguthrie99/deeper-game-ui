@@ -1,5 +1,8 @@
 
-import React from 'react';
+import React, {useState, useContext} from 'react'
+import { FirebaseContext } from "../firebase/FirebaseContext";
+import { collection, addDoc, updateDoc, arrayUnion, doc } from "firebase/firestore"; 
+import { AuthContext } from "../session/AuthContext";
 import { Link as RouterLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -8,10 +11,80 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CreateGameModal from '../components/Forms/CreateGameModal';
+import JoinGameModal from '../components/Forms/JoinGameModal';
 
 const theme = createTheme();
 
-const Dashboard = (props) => {
+const Dashboard = ({history}) => {
+
+    const firebase = useContext(FirebaseContext);
+    const { authState } = useContext(AuthContext);
+    const [openCreate, setOpenCreate] = useState(false);
+    const [openJoin, setOpenJoin] = useState(false);
+
+
+    const handleCreateGame =  async (e) => {
+        e.preventDefault()
+
+        const data = new FormData(e.currentTarget);
+        
+        try {
+            const docRef = await addDoc(collection(firebase.db, "games"), {
+              restricted: data.get("restricted") ? true : false,
+              players : [{ 
+                  uid: authState.user.uid,
+                  displayName: authState.user.displayName,
+                  photoURL : authState.user.photoURL
+                 }],
+              c_uid : authState.user.uid
+            });
+            console.log("Document written with ID: ", docRef.id);
+            history.push(`/game/${docRef.id}`);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+            // setErrors(e)
+        }
+
+    }
+
+    const handleJoinGame =  async (e) => {
+        e.preventDefault()
+        const data = new FormData(e.currentTarget);
+        const gameId =  data.get("text")
+
+        try {
+            await updateDoc(doc(firebase.db, "games", gameId), {
+                players : arrayUnion({ 
+                    uid: authState.user.uid,
+                    displayName: authState.user.displayName,
+                    photoURL : authState.user.photoURL
+                })
+            });
+            console.log("Document update with ID: ", gameId);
+            history.push(`/game/${gameId}`);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        //   setErrors(e)
+        }
+
+    }
+
+    const handleOpenCreate = () => {
+        setOpenCreate(true)
+    };
+
+    const handleCloseCreate = () => {
+        setOpenCreate(false)
+    };
+
+    const handleOpenJoin = () => {
+        setOpenJoin(true)
+    };
+
+    const handleCloseJoin = () => {
+        setOpenJoin(false)
+    };
 
   return (
     <ThemeProvider theme={theme}>
@@ -45,12 +118,22 @@ const Dashboard = (props) => {
               justifyContent="center"
             >
                 
-                <Button component={RouterLink} to={"/question"} disabled variant="contained" color='primary'>Start a Game</Button>
-                <Button component={RouterLink} to={"/question"} disabled variant="contained" color='secondary'>Join a Game</Button>
+                <Button  onClick={() => handleOpenCreate()}  variant="contained" color='primary'>Create a Game</Button>
+                <Button onClick={() => handleOpenJoin()}  variant="contained" color='secondary'>Join a Game</Button>
                 <Button component={RouterLink} to={"/question"} disabled variant="outlined" color="info">View Rules</Button>  
             </Stack>
           </Container>
         </Box>
+        <CreateGameModal
+                open={openCreate}
+                handleClose={handleCloseCreate}
+                handleCreateGame={handleCreateGame}
+            />
+        <JoinGameModal
+                open={openJoin}
+                handleClose={handleCloseJoin}
+                handleJoinGame={handleJoinGame}
+            />
     </ThemeProvider>
   );
 };
