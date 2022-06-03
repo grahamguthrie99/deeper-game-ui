@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import SkeletonPage from '../Loading/SkeletonPage';
 import Lobby from './Lobby/Lobby';
-import Temp from './Play/Temp';
+import Play from './Play/Play';
 
 
 
 const GameBoard = ({game, gameId, qMaster}) => {
+
+
 
     const [start, setStart] = useState(false)
 
@@ -15,11 +17,12 @@ const GameBoard = ({game, gameId, qMaster}) => {
         }
     }, [game])
 
+
     if (game == null) return <SkeletonPage />
 
 
-    return ( start ? 
-        <Temp 
+    return (start ? 
+        <Play 
             game={game}
             gameId={gameId}
             qMaster={qMaster}
@@ -30,9 +33,8 @@ const GameBoard = ({game, gameId, qMaster}) => {
             gameId={gameId}
             qMaster={qMaster}
             setStart={setStart}
-        />        
+        /> 
     )
-     
 };
 
 export default GameBoard;

@@ -37,8 +37,9 @@ const Game = () => {
     }, [id, firebase.db])
 
     useEffect(  () => {
-        if(authState != null && game != null)
+        if(authState != null && game != null){
             setQMaster(game.c_uid === authState.user.uid)
+        }
     }, [id, authState, game])
     
 

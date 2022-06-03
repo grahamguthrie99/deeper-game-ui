@@ -33,6 +33,7 @@ const PlayerList = ({players, setPlayers}) => {
         return arr; // for testing
     };
   
+    //change person icon to avatar 
   return ( 
     <List >
         {players.map((player, i) => ((

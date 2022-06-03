@@ -52,6 +52,7 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
     };
 
  
+    //filter out questions based off game criteria 
     const handleStartGame = async (e) => {
         e.preventDefault()
         try {
@@ -59,6 +60,10 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
                 players : players,
                 questions: questions, 
                 started: true, 
+                currPlayer: players[0], 
+                turnIndex: 0, 
+                currQuestion: questions[0], 
+                questionIndex: 0,
             });
             setStart(true)
         } catch (e) {

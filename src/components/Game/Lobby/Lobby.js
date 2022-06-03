@@ -8,7 +8,8 @@ const Lobby = ({game, gameId, qMaster, setStart}) => {
 
   const firebase = useContext(FirebaseContext);
   const [questions, setQuestions] = useState([]); 
-  
+
+  //change to just retrieve once
   useEffect(  () => {
       if(firebase.db){
           function fetchQuestionList(){
