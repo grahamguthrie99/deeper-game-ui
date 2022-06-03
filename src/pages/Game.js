@@ -3,15 +3,20 @@ import { FirebaseContext } from "../firebase/FirebaseContext";
 import { doc, onSnapshot } from "firebase/firestore"; 
 import SkeletonPage from "../components/Loading/SkeletonPage";
 import { useParams } from 'react-router-dom'
-import Join from '../components/Game/Join';
+import { AuthContext } from "../session/AuthContext";
+import GameBoard from '../components/Game/GameBoard';
 
 
 const Game = () => {
+    const { id } = useParams()
+    const { authState } = useContext(AuthContext);
     const firebase = useContext(FirebaseContext);
     const [game, setGame] = useState(null); 
-
+   
+    const [qMaster, setQMaster] = useState(false)
     const [loading, setLoading] = useState(true); 
-    const { id } = useParams()
+    
+    
 
     useEffect(  () => {
         if(firebase.db){
@@ -30,15 +35,24 @@ const Game = () => {
 
         }
     }, [id, firebase.db])
+
+    useEffect(  () => {
+        if(authState != null && game != null)
+            setQMaster(game.c_uid === authState.user.uid)
+    }, [id, authState, game])
     
 
     return ( loading ?  
-
-        <SkeletonPage /> : 
-         <Join
-            game={game}
-            id={id}
-         />)
+    
+     <SkeletonPage /> : 
+     <GameBoard  
+        game={game}
+        gameId={id}
+        qMaster={qMaster}
+        />
+        
+   
+    )
       
       
 };
