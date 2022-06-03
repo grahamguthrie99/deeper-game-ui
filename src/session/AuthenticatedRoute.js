@@ -6,8 +6,9 @@ const AuthenticatedRoute = ({ component: RouteComponent, ...rest }) => {
   const { authState } = useContext(AuthContext);
   const userLocal = JSON.parse(localStorage.getItem("user"));
 
+  console.log(!!authState.user || !!userLocal)
   return (
-    <Route
+   !!authState.user || !!userLocal ? <Route
       {...rest}
       render={(routeProps) =>
         !!authState.user || !!userLocal ? (
@@ -16,7 +17,7 @@ const AuthenticatedRoute = ({ component: RouteComponent, ...rest }) => {
           <Redirect to="/" />
         )
       }
-    />
+    /> :  <Redirect to="/" />
   );
 };
 

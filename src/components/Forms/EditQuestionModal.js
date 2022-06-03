@@ -179,7 +179,7 @@ const EditQuestionModal = ({ open, handleClose, question}) => {
                 </Box>
                 <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
                     <Toolbar>
-                        <StyledFab color="error" aria-label="add" onClick={handleDelete}>
+                        <StyledFab color="error" aria-label="delete" onClick={handleDelete}>
                             <DeleteIcon  />
                         </StyledFab>
                     </Toolbar>
