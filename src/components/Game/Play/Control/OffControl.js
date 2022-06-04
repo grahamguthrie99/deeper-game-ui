@@ -9,7 +9,7 @@ import SendIcon from '@mui/icons-material/Send';
 import LinearProgress from '@mui/material/LinearProgress'
 
 
-const OffControl = ({qMaster}) => {
+const OffControl = ({qMaster, game}) => {
    
     return ( 
         <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, py: 2 }}>
@@ -20,7 +20,7 @@ const OffControl = ({qMaster}) => {
                 <LinearProgress />
             </Box>
           </Fab>
-          {qMaster && <AdminControl />}
+          {qMaster && <AdminControl game={game} />}
           <Box sx={{ flexGrow: 1 }} />
           <Fab variant="extended" disabled>
             <Box sx={{ width: 100 }}>

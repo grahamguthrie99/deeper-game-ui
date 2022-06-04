@@ -7,19 +7,19 @@ import Fab from '@mui/material/Fab';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SendIcon from '@mui/icons-material/Send';
 
-const TurnControl = ({qMaster, handleSkip, gameEnded, handlePass}) => {
+const TurnControl = ({qMaster, handleSkip,handlePass, game}) => {
 
    
     return ( 
       <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, py:2 }}>
         <Toolbar>
-          <Fab variant="extended" onClick={handlePass} disabled={gameEnded}>
+          <Fab variant="extended" onClick={handlePass} >
             <SendIcon sx={{ mr: 1 }} />
             Next Player
           </Fab>
-          {qMaster && <AdminControl />}
+          {qMaster && <AdminControl game={game} />}
           <Box sx={{ flexGrow: 1 }} />
-          <Fab variant="extended" onClick={handleSkip} disabled={gameEnded}>
+          <Fab variant="extended" onClick={handleSkip} >
             Skip Question
             <SkipNextIcon  />   
           </Fab>

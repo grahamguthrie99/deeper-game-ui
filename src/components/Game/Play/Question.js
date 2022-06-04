@@ -11,7 +11,7 @@ const Question = ({currQuestion}) => {
     return ( 
         <Box
                 sx={{
-                marginTop: 2,
+                marginTop: 1,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',

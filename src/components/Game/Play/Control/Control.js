@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { AuthContext } from "../../../../session/AuthContext";
 import { FirebaseContext } from "../../../../firebase/FirebaseContext";
-import { updateDoc, doc } from "firebase/firestore"; 
+import { updateDoc, doc} from "firebase/firestore"; 
 import OffControl from './OffControl';
 import TurnControl from './TurnControl';
 
@@ -13,12 +13,15 @@ const Control = ({game, currPlayer}) => {
     var {questionIndex, questions, turnIndex, players} = game; 
 
     const [qMaster, setQMaster] = useState(false)
-    const [gameEnded, setGameEnded] = useState(false)
+    
 
     useEffect(  () => {
       if(authState != null && game != null)
           setQMaster(game.c_uid === authState.user.uid)
     }, [ authState, game])
+
+
+  
 
     const handlePass = async (e) => {
       e.preventDefault()
@@ -32,7 +35,6 @@ const Control = ({game, currPlayer}) => {
                 questionIndex: nextQuestionIndex,
                 turnIndex: nextTurn, 
                 currPlayer: players[nextTurn],
-                gameEnded : gameEnded
               });
           } catch (e) {
               console.error("Error adding document: ", e);
@@ -40,7 +42,14 @@ const Control = ({game, currPlayer}) => {
           }
       }
       else{
-        setGameEnded(true)
+        try {
+          await updateDoc(doc(firebase.db, "games", game.id), {
+              gameEnded : true
+            });
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        //   setErrors(e)
+        }
       }
     }
 
@@ -52,7 +61,6 @@ const Control = ({game, currPlayer}) => {
             await updateDoc(doc(firebase.db, "games", game.id), {
                 currQuestion: questions[nextQuestionIndex], 
                 questionIndex: nextQuestionIndex,
-                gameEnded : gameEnded
               });
           } catch (e) {
               console.error("Error adding document: ", e);
@@ -60,7 +68,14 @@ const Control = ({game, currPlayer}) => {
           }
       }
       else{
-        setGameEnded(true)
+        try {
+          await updateDoc(doc(firebase.db, "games", game.id), {
+              gameEnded : true
+            });
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        //   setErrors(e)
+        }
       }
       
     };
@@ -71,11 +86,11 @@ const Control = ({game, currPlayer}) => {
         game={game}
         handleSkip={handleSkip}
         handlePass={handlePass}
-        gameEnded={gameEnded}
         /> : 
       <OffControl 
+        game={game}
         qMaster={qMaster}
-        />
+      />
     )
      
 };

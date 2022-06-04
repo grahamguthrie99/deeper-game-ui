@@ -8,11 +8,14 @@ import Divider from '@mui/material/Divider';
 
 const Play = ({game, setStart}) => {
 
+   
+
     const [players, setPlayers] = useState(game.players)
     const [currPlayer, setCurrPlayer] = useState(game.currPlayer)
     const [turnIndex, setTurnIndex] = useState(game.turnIndex)
     const [currQuestion, setCurrQuestion] = useState(game.currQuestion)
     const [questionIndex, setQuestionIndex] = useState(game.questionIndex)
+   
 
 
     useEffect(  () => {
@@ -24,8 +27,7 @@ const Play = ({game, setStart}) => {
         setQuestionIndex(game.questionIndex)
     }, [game, setStart])
 
-
-   
+ 
     return ( 
        <>
             <Turn 

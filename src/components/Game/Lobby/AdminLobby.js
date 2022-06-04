@@ -60,6 +60,7 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
                 players : players,
                 questions: questions, 
                 started: true, 
+                gameEnded: false, 
                 currPlayer: players[0], 
                 turnIndex: 0, 
                 currQuestion: questions[0], 
