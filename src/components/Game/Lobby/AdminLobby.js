@@ -32,7 +32,6 @@ const StyledFab = styled(Fab)({
 const AdminLobby = ({game, gameId, setStart, questions}) => {
 
     const firebase = useContext(FirebaseContext);
-  
 
     const [enableStart, setEnableStart] = useState(false)
     const [players, setPlayers] = useState(game.players)
@@ -52,13 +51,17 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
     };
 
  
-    //filter out questions based off game criteria 
     const handleStartGame = async (e) => {
         e.preventDefault()
+        var gameQuestions = questions
+        if(!game.restricted)
+            gameQuestions = gameQuestions.filter(question => question.restricted !== true)
+        if(!game.punishments)
+        gameQuestions = gameQuestions.filter(question => question.type !== 7)
         try {
             await updateDoc(doc(firebase.db, "games", gameId), {
                 players : players,
-                questions: questions, 
+                questions: gameQuestions, 
                 started: true, 
                 gameEnded: false, 
                 currPlayer: players[0], 

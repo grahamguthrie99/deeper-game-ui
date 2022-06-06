@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Control from './Control/Control';
-import Question from './Question';
+import Question from './Question/Question';
 import Turn from './Turn';
 import Divider from '@mui/material/Divider';
 

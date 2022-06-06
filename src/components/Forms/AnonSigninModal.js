@@ -22,7 +22,7 @@ const AnonSigninModal = ({ history, open, setOpen, actions }) => {
         e.preventDefault()
         const data = new FormData(e.currentTarget);
         try {
-            actions.guestLogin(data.get("text"))
+            await actions.guestLogin(data.get("text"))
             setOpen(false)
             history.push("/home");
         } catch (e) {

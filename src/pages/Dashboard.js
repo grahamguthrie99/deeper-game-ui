@@ -32,6 +32,7 @@ const Dashboard = ({history}) => {
         try {
             const docRef = await addDoc(collection(firebase.db, "games"), {
               restricted: data.get("restricted") ? true : false,
+              punishments: data.get("punishments") ? true : false,
               players : [{ 
                   uid: authState.user.uid,
                   displayName: authState.user.displayName,

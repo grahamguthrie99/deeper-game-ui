@@ -2,7 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import {QuestionTypes ,QuestionIcons} from "../../../utils/QuestionTypes"
+import {QuestionTypes ,QuestionIcons} from "../../../../utils/QuestionTypes"
 import Chip from '@mui/material/Chip';
 
 

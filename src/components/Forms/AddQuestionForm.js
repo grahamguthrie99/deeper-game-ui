@@ -15,6 +15,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {QuestionTypes } from "../../utils/QuestionTypes"
 import { AuthContext } from "../../session/AuthContext";
 import AddIcon from '@mui/icons-material/Add';
 
@@ -81,12 +82,9 @@ const AddQuestionForm = ({ history }) => {
                     label="type"
                     onChange={handleTypeChange}
                 >
-                    <MenuItem value={1}>Would You Rather</MenuItem>
-                    <MenuItem value={2}>Debate</MenuItem>
-                    <MenuItem value={3}>Top 5...</MenuItem>
-                    <MenuItem value={4}>Anonomous Answer</MenuItem>
-                    <MenuItem value={5}>Mini Game</MenuItem>
-                    <MenuItem value={6}>Hypothetical</MenuItem>
+                    {Object.keys(QuestionTypes).map((key) => {
+                      return  <MenuItem key={key} value={key}>{QuestionTypes[key]}</MenuItem>
+                    })}
                 </Select>
             </FormControl>
             <FormControlLabel

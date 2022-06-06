@@ -35,9 +35,14 @@ const StyledFab = styled(Fab)({
 const CreateGameModal = ({ open, handleClose, handleCreateGame }) => {
 
     const [qRestricted, setRestricted] = useState(true);
+    const [qPunishments, setPunishment] = useState(true);
 
-    const handleCheckChange = (event) => {
+    const handleCheckRestrictedChange = (event) => {
         setRestricted(event.target.checked);
+    };
+
+    const handleCheckPunishmentChange = (event) => {
+        setPunishment(event.target.checked);
     };
 
     return (
@@ -69,10 +74,21 @@ const CreateGameModal = ({ open, handleClose, handleCreateGame }) => {
                                 name="restricted" 
                                 value={qRestricted}  
                                 checked={qRestricted}
-                                onChange={handleCheckChange} 
+                                onChange={handleCheckRestrictedChange} 
                                 inputProps={{ 'aria-label': 'controlled' }}
                                 color="primary" />}
                             label="Use 18+ Questions?"
+                            sx={{ mt: 1 }}
+                        />
+                         <FormControlLabel
+                            control={<Checkbox id="punishments" 
+                                name="punishments" 
+                                value={qPunishments}  
+                                checked={qPunishments}
+                                onChange={handleCheckPunishmentChange} 
+                                inputProps={{ 'aria-label': 'controlled' }}
+                                color="primary" />}
+                            label="Play with Punishments?"
                             sx={{ mt: 1 }}
                         />
                         
