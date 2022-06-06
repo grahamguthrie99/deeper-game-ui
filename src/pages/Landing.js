@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { AuthContext } from "../session/AuthContext";
 import AuthButton from "../components/Header/AuthButton";
 import Avatar from '@mui/material/Avatar';
@@ -9,12 +9,16 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SkeletonPage from "../components/Loading/SkeletonPage";
+import AnonSigninModal from "../components/Forms/AnonSigninModal"
+import Button from '@mui/material/Button';
 
 const theme = createTheme();
 
 const Landing = ({ history }) => {
   const { authState, actions } = useContext(AuthContext);
   const { loading } = authState;
+
+  const [open, setOpen] = useState(false);
 
 
   async function onSubmit() {
@@ -27,6 +31,9 @@ const Landing = ({ history }) => {
       errors.onSave = e.message;
     }
   }
+
+
+
 
   return loading ? (
     <SkeletonPage />
@@ -53,8 +60,19 @@ const Landing = ({ history }) => {
                 Sign In With Google
             </AuthButton>
         </Box>
+        <Box sx={{ mt: 1 }}>
+            <Button onClick={() => setOpen(true)} variant="outlined" color="info">
+                Play as a Guest
+            </Button>  
+        </Box>
       </Box>
     </Container>
+    <AnonSigninModal 
+                open={open}
+                setOpen={setOpen}
+                history={history}
+                actions={actions}
+            /> 
   </ThemeProvider>
     
   );

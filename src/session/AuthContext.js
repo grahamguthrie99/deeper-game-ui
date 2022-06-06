@@ -1,6 +1,6 @@
 import React, { useEffect, createContext, useContext, useReducer } from "react";
 import { FirebaseContext } from "../firebase/FirebaseContext";
-import { signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
+import { signInWithPopup, onAuthStateChanged, signOut, signInAnonymously, updateProfile } from "firebase/auth";
 import { ManageAuthReducer, initialState } from "./ManageAuthReducer";
 import { startLogin, setUser, loginFailure } from "./ManageAuthReducer";
 
@@ -21,12 +21,25 @@ export const AuthProvider = (props) => {
         throw new Error(e.message);
       }
     },
+    async guestLogin(displayName) {
+        dispatch(startLogin());
+        try {
+           await signInAnonymously(firebase.auth, firebase.provider)
+           const user = firebase.auth.currentUser
+           await updateProfile(user, {displayName: displayName})
+           dispatch(setUser(firebase.auth.currentUser));
+
+        } catch (e) {
+          dispatch(loginFailure());
+          throw new Error(e.message);
+        }
+      },
 
     logout() {
         signOut(firebase.auth);
         localStorage.clear();
     }
-    
+
   };
 
   useEffect(() => {
