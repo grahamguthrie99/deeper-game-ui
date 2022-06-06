@@ -58,6 +58,7 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
             gameQuestions = gameQuestions.filter(question => question.restricted !== true)
         if(!game.punishments)
         gameQuestions = gameQuestions.filter(question => question.type !== 7)
+        gameQuestions = shuffle(gameQuestions)
         try {
             await updateDoc(doc(firebase.db, "games", gameId), {
                 players : players,
@@ -74,8 +75,25 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
             console.error("Error adding document: ", e);
         //   setErrors(e)
         }
-      
     };
+
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+      
+        // While there remain elements to shuffle.
+        while (currentIndex !== 0) {
+      
+          // Pick a remaining element.
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+      
+          // And swap it with the current element.
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+      
+        return array;
+      }
 
     
     return ( 
