@@ -13,7 +13,8 @@ const style = {
   height: "100%",
   width: "100%", 
   bgcolor: 'background.paper',
-
+  display: "flex", 
+  alignItems: "start"
 };
 
 const AnonSigninModal = ({ history, open, setOpen, actions }) => {
@@ -37,7 +38,7 @@ const AnonSigninModal = ({ history, open, setOpen, actions }) => {
     };
 
   return (
-    <div>
+
       <Modal
       open={open}
       onClose={handleClose}
@@ -47,10 +48,11 @@ const AnonSigninModal = ({ history, open, setOpen, actions }) => {
           <Box sx={style}>
           <Box
             sx={{
-              marginTop: 8,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              px: 4, 
+              mt: "50%", 
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -73,15 +75,16 @@ const AnonSigninModal = ({ history, open, setOpen, actions }) => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3 }}
               >
                 Play as Guest
               </Button>
               <Button
                 onClick={() => handleClose()}
                 fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                variant="outlined"
+                color="error"
+                sx={{ mt: 3}}
               >
                 Close
               </Button>
@@ -89,7 +92,6 @@ const AnonSigninModal = ({ history, open, setOpen, actions }) => {
           </Box>
         </Box>
       </Modal>
-    </div>
   )
 }
 

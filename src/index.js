@@ -7,7 +7,12 @@ import { FirebaseProvider } from "./firebase/FirebaseContext";
 import { AuthProvider } from "./session/AuthContext";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-let theme = createTheme();
+let theme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeProvider theme={theme}>

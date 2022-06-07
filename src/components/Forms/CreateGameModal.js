@@ -20,7 +20,9 @@ const style = {
   width: "100%", 
   bgcolor: 'background.paper',
   boxShadow: 24,
-  p: 4,
+  backgroundImage: "url('https://images.unsplash.com/photo-1511406361295-0a1ff814c0ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
 };
 
 const StyledFab = styled(Fab)({
@@ -46,7 +48,6 @@ const CreateGameModal = ({ open, handleClose, handleCreateGame }) => {
     };
 
     return (
-    <div>
         <Modal
         open={open}
         onClose={handleClose}
@@ -56,16 +57,17 @@ const CreateGameModal = ({ open, handleClose, handleCreateGame }) => {
             <Box sx={style}>
                 <Box
                     sx={{
-                    marginTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    }}
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        p: 4, 
+                        mt: "50%", 
+                      }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                         <AddIcon />
                     </Avatar>
-                    <Typography component="h1" variant="h5">
+                    <Typography variant="h5"  color="text.primary">
                         Create Game
                     </Typography>
                     <Box component="form" onSubmit={handleCreateGame} noValidate sx={{ mt: 1 }}>
@@ -78,7 +80,8 @@ const CreateGameModal = ({ open, handleClose, handleCreateGame }) => {
                                 inputProps={{ 'aria-label': 'controlled' }}
                                 color="primary" />}
                             label="Use 18+ Questions?"
-                            sx={{ mt: 1 }}
+                           
+                            sx={{ mt: 1, color:  "text.primary" }}
                         />
                          <FormControlLabel
                             control={<Checkbox id="punishments" 
@@ -89,7 +92,7 @@ const CreateGameModal = ({ open, handleClose, handleCreateGame }) => {
                                 inputProps={{ 'aria-label': 'controlled' }}
                                 color="primary" />}
                             label="Play with Punishments?"
-                            sx={{ mt: 1 }}
+                            sx={{ mt: 1, color:  "text.primary" }}
                         />
                         
                         <Button
@@ -112,7 +115,6 @@ const CreateGameModal = ({ open, handleClose, handleCreateGame }) => {
                 </AppBar>
             </Box>
         </Modal>
-    </div>
   );
 }
 
