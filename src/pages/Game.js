@@ -41,6 +41,7 @@ const Game = () => {
             setQMaster(game.c_uid === authState.user.uid)
         }
     }, [id, authState, game])
+
     
 
     return ( loading ?  

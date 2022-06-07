@@ -37,6 +37,7 @@ const Play = ({game, setStart}) => {
             />
             <Divider variant="middle" sx={{ mt: 1 }} />
             <Question
+                game={game}
                 currQuestion={currQuestion}
                 questionIndex={questionIndex}
                 />

@@ -12,7 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import EditQuestionModal from '../Forms/EditQuestionModal';
 
 
-const QuestionList = ({user = null}) => {
+const QuestionList = () => {
     const firebase = useContext(FirebaseContext);
     const [questions, setQuestions] = useState([]); 
     const [question, setQuestion] = useState(null); 
