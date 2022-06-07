@@ -13,7 +13,7 @@ import NotFound from "./pages/NotFound";
 function App() {
 
   return (
-    <div>
+    <>
       <Header />
       <Switch>
           <Route exact path="/" component={Landing} />
@@ -24,7 +24,7 @@ function App() {
           <AuthenticatedRoute exact path="/rules" component={Rules} />
           <Route path="*" component={NotFound} />
       </Switch>
-    </div>
+    </>
   )
   
 }
