@@ -18,9 +18,12 @@ const style = {
   top: "0px", 
   height: "100%",
   width: "100%", 
-  bgcolor: 'background.paper',
+  bgcolor: '#000',
   boxShadow: 24,
-  p: 4,
+  backgroundImage: "url('https://media2.giphy.com/media/KfZHOqVdtzmMSLquhY/giphy.gif?cid=ecf05e47wpc9xtwxjh1ubx9f35rk8dypuji676kkncnds2pb&rid=giphy.gif&ct=s')",
+  backgroundSize: "fit",
+  backgroundPosition: "center bottom",
+  backgroundRepeat: "no-repeat"
 };
 
 const StyledFab = styled(Fab)({
@@ -52,24 +55,25 @@ const JoinGameModal = ({ open, handleClose, handleJoinGame }) => {
             <Box sx={style}>
                 <Box
                     sx={{
-                    marginTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    }}
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        p: 4, 
+                        mt: "30%", 
+                      }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                         <AddIcon />
                     </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Create Game
+                    <Typography component="h1" variant="h5" color="text.primary">
+                        Join Game
                     </Typography>
                     <Box component="form" onSubmit={handleJoinGame} noValidate sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
                             fullWidth
                             name="text"
-                            label="Game Text"
+                            label="Game Code"
                             type="text"
                             id="text"
                             required

@@ -32,7 +32,7 @@ const AnonQuestion = ({currQuestion, questionMetadata}) => {
                 <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
                     Question
                 </Typography>
-                <Typography variant="h4" component="div" sx={{mb:2}}>
+                <Typography variant="h4" component="div" sx={{mb:2}} color="text.primary">
                     {currQuestion.text}
                 </Typography>
                 <Stack

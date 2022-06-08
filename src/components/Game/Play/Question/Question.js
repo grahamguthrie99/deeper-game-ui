@@ -36,7 +36,10 @@ const Question = ({game, currQuestion}) => {
 
     return ( <>
          {loading ?  <SkeletonPage /> : InteractiveQuestions[currQuestion.type] ? 
-            <InteractiveQuestion game={game} currQuestion={currQuestion}  />  :  <QuestionCard currQuestion={currQuestion} /> }
+            <InteractiveQuestion game={game} currQuestion={currQuestion}  />  :  
+            <QuestionCard currQuestion={currQuestion} /> 
+            
+        }
     </>)
 };
 

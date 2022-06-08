@@ -5,16 +5,14 @@ import { collection, addDoc, updateDoc, arrayUnion, doc } from "firebase/firesto
 import { AuthContext } from "../session/AuthContext";
 import { Link as RouterLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CreateGameModal from '../components/Forms/CreateGameModal';
 import JoinGameModal from '../components/Forms/JoinGameModal';
 
-const theme = createTheme();
 
 const Dashboard = ({history}) => {
 
@@ -88,16 +86,17 @@ const Dashboard = ({history}) => {
     };
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
         <Box
           sx={{
             bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
+            height: "100vh",
+            pt: 5,
+            backgroundImage: "url('https://images.unsplash.com/photo-1506748566756-07746caecd61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')",
+            backgroundSize: "cover"
+           
           }}
         >
-          <Container maxWidth="sm">
+          <Container maxWidth="xs">
             <Typography
               component="h1"
               variant="h2"
@@ -105,27 +104,25 @@ const Dashboard = ({history}) => {
               color="text.primary"
               gutterBottom
             >
-              Time to get Deeper.  
+              Time to Go Deeper.
             </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-               Deeper is the game designed to help you form stronger bonds with any of your friends. 
+            <Typography align="center" color="text.secondary" paragraph>
+               Form stronger bonds with your friends. Play in any group setting. Read the rules before you begin, and then have one person kick off the game. 
             </Typography>
-            <Typography variant="p" align="center" color="text.secondary" paragraph>
-               Read the rules before you begin. Deeper can be played in any group setting. Have one person from your group kick the game off and follow the rabbit hole from there.  
-            </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              spacing={2}
-              justifyContent="center"
-            >
-                
-                <Button  onClick={() => handleOpenCreate()}  variant="contained" color='primary'>Create a Game</Button>
-                <Button onClick={() => handleOpenJoin()}  variant="contained" color='secondary'>Join a Game</Button>
-                <Button component={RouterLink} to={"/question"} disabled variant="outlined" color="info">View Rules</Button>  
-            </Stack>
+            <Paper sx={{ mt: 4 }} elevation={24}>
+                <Stack
+                sx={{ p: 4 }}
+                spacing={2}
+                justifyContent="center"
+                >
+                    
+                    <Button  onClick={() => handleOpenCreate()}  variant="contained" color='primary'>Create a Game</Button>
+                    <Button onClick={() => handleOpenJoin()}  variant="contained" color='secondary'>Join a Game</Button>
+                    <Button component={RouterLink} to={"/question"} variant="outlined" color='primary'>View Rules</Button>  
+                </Stack>
+            </Paper>
           </Container>
-        </Box>
-        <CreateGameModal
+          <CreateGameModal
                 open={openCreate}
                 handleClose={handleCloseCreate}
                 handleCreateGame={handleCreateGame}
@@ -135,11 +132,13 @@ const Dashboard = ({history}) => {
                 handleClose={handleCloseJoin}
                 handleJoinGame={handleJoinGame}
             />
-    </ThemeProvider>
+        </Box>
   );
 };
 
 export default Dashboard;
+
+
 
 
 

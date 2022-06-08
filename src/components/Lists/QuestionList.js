@@ -3,6 +3,7 @@ import { FirebaseContext } from "../../firebase/FirebaseContext";
 import { collection, query, onSnapshot } from "firebase/firestore"; 
 import {QuestionTypes ,QuestionIcons} from "../../utils/QuestionTypes"
 import List from '@mui/material/List';
+import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -10,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton'
 import EditIcon from '@mui/icons-material/Edit';
 import EditQuestionModal from '../Forms/EditQuestionModal';
+import Typography from '@mui/material/Typography';
 
 
 const QuestionList = () => {
@@ -47,7 +49,7 @@ const QuestionList = () => {
     };
 
     return (
-        <>
+        <Box>
             <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
         
                 {questions.map(question => (
@@ -67,13 +69,26 @@ const QuestionList = () => {
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText
-                        primary={QuestionTypes[question.type]}
+                        primary={<React.Fragment>
+                            <Typography
+                              sx={{ display: 'inline' }}
+                              variant="body"
+                              color="text.primary"
+                            >
+                              {QuestionTypes[question.type]}
+                            </Typography>
+                          </React.Fragment>}
                         secondary={
-                        <React.Fragment>
-                            {question.text}
-                        </React.Fragment>
-                        }
-                    />
+                            <React.Fragment>
+                            <Typography
+                              sx={{ display: 'inline' }}
+                              variant="body"
+                              color="text.primary">
+                            
+                              {question.text}
+                            </Typography>
+                          </React.Fragment>}
+                          />
                     </ListItem>
 
                 ))}
@@ -84,7 +99,7 @@ const QuestionList = () => {
                 handleClose={handleClose}
                 question={question} 
             />}
-        </>
+        </Box>
     )
 
 }

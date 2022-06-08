@@ -11,13 +11,17 @@ import { FirebaseContext } from "../../firebase/FirebaseContext";
 import { AuthContext } from "../../session/AuthContext";
 
 const style = {
-  position: 'absolute',
-  top: "0px", 
-  height: "100%",
-  width: "100%", 
-  bgcolor: 'background.paper',
-
-};
+    position: 'absolute',
+    top: "0px", 
+    height: "100%",
+    width: "100%", 
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    backgroundImage: "url('https://media3.giphy.com/media/zxAoODXqWnEU3lUlnD/giphy.gif?cid=ecf05e47anq5img1sla5acp3mh3odvjr9zyu86eb87ij7klj&rid=giphy.gif&ct=s')",
+    backgroundSize: "fixed",
+    backgroundRepeat: "repeat-x",
+    backgroundPosition: "center bottom",
+  };
 
 const AnonAnswerModal = ({ open, setOpen, questionMetadata }) => {
 
@@ -56,17 +60,18 @@ const AnonAnswerModal = ({ open, setOpen, questionMetadata }) => {
       >
           <Box sx={style}>
           <Box
-            sx={{
-              marginTop: 8,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
+             sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                p: 4, 
+                mt: "10%", 
+              }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <PersonOutlineIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5" color="text.primary">
               Answer Anonymously
             </Typography>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -90,7 +95,8 @@ const AnonAnswerModal = ({ open, setOpen, questionMetadata }) => {
               <Button
                 onClick={() => handleClose()}
                 fullWidth
-                variant="contained"
+                color="error"
+                variant="outlined"
                 sx={{ mt: 3, mb: 2 }}
               >
                 Close

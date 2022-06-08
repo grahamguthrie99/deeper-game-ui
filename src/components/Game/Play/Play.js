@@ -3,6 +3,7 @@ import Control from './Control/Control';
 import Question from './Question/Question';
 import Turn from './Turn';
 import Divider from '@mui/material/Divider';
+import Box from '@mui/material/Box';
 
 
 
@@ -29,13 +30,22 @@ const Play = ({game, setStart}) => {
 
  
     return ( 
-       <>
+        <Box
+          sx={{
+            bgcolor: 'background.paper',
+            height: "100vh",
+            pt: 0, 
+            display: 'flex',
+            flexDirection: 'column',
+       
+          }}
+        >
             <Turn 
                 currPlayer={currPlayer}
                 players={players}
                 turnIndex={turnIndex}
             />
-            <Divider variant="middle" sx={{ mt: 1 }} />
+            <Divider variant="middle" sx={{ mt: 2 }} />
             <Question
                 game={game}
                 currQuestion={currQuestion}
@@ -47,7 +57,7 @@ const Play = ({game, setStart}) => {
                 setCurrQuestion={setCurrQuestion}
             />
        
-       </>
+       </Box>
     )
      
 };

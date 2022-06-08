@@ -4,6 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PersonIcon from '@mui/icons-material/Person';
@@ -55,7 +56,15 @@ const PlayerList = ({players, setPlayers}) => {
             </Avatar>
             </ListItemAvatar>
             <ListItemText
-            primary={player.displayName}
+                primary={<React.Fragment>
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      variant="h6"
+                      color="text.primary"
+                    >
+                      {player.displayName}
+                    </Typography>
+                  </React.Fragment>}
             />
         </ListItem>
         )))}

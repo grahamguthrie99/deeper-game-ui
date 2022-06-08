@@ -27,6 +27,8 @@ const TurnList = ({players, turnIndex}) => {
 
             <ListItem key={player.uid}>
                 <Chip
+                variant="outlined"
+                color="error"
                 label={player.displayName}
                 />
             </ListItem>
