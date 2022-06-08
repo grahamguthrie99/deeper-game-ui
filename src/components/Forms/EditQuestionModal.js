@@ -23,13 +23,13 @@ import Fab from '@mui/material/Fab';
 
 
 const style = {
-  position: 'absolute',
-  top: "0px", 
-  height: "100%",
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 4,
-};
+    position: 'absolute',
+    top: "0px", 
+    height: "100%",
+    width: "100%", 
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+  };
 
 const StyledFab = styled(Fab)({
     position: 'absolute',
@@ -97,7 +97,6 @@ const EditQuestionModal = ({ open, handleClose, question}) => {
     }
 
     return (
-    <div>
         <Modal
         open={open}
         onClose={handleClose}
@@ -106,17 +105,18 @@ const EditQuestionModal = ({ open, handleClose, question}) => {
         >
             <Box sx={style}>
                 <Box
-                    sx={{
-                    marginTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    }}
+                     sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        p: 2, 
+                        mt: "35%", 
+                      }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                         <EditIcon />
                     </Avatar>
-                    <Typography component="h1" variant="h5">
+                    <Typography component="h1" variant="h5" color="text.primary">
                         Edit Question
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -147,7 +147,8 @@ const EditQuestionModal = ({ open, handleClose, question}) => {
                             inputProps={{ 'aria-label': 'controlled' }}
                             color="primary" />}
                         label="Age Restricted?"
-                        sx={{ mt: 1 }}
+                        
+                        sx={{ mt: 1, color:"text.primary" }}
                     />
                     <TextField
                         margin="normal"
@@ -171,6 +172,8 @@ const EditQuestionModal = ({ open, handleClose, question}) => {
                     <Button
                         onClick={handleClose}
                         fullWidth
+                        variant="outlined"
+                        color="error"
                         sx={{ mb: 2 }}
                     >
                         Close
@@ -186,7 +189,6 @@ const EditQuestionModal = ({ open, handleClose, question}) => {
                 </AppBar>
             </Box>
         </Modal>
-    </div>
   );
 }
 

@@ -20,9 +20,10 @@ const style = {
   width: "100%", 
   bgcolor: 'background.paper',
   boxShadow: 24,
-  backgroundImage: "url('https://images.unsplash.com/photo-1511406361295-0a1ff814c0ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
+  backgroundImage: "url('https://media1.giphy.com/media/xuXwaBKovnr4UefUyn/giphy.gif?cid=ecf05e47oxy3zoq55dtww7wzlfwth0porbmq3xilk0dnqzjh&rid=giphy.gif&ct=s')",
+  backgroundSize: "fixed",
+  backgroundRepeat: "repeat-x",
+  backgroundPosition: "center bottom",
 };
 
 const StyledFab = styled(Fab)({
@@ -61,7 +62,7 @@ const CreateGameModal = ({ open, handleClose, handleCreateGame }) => {
                         flexDirection: 'column',
                         alignItems: 'center',
                         p: 4, 
-                        mt: "50%", 
+                        mt: "35%", 
                       }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>

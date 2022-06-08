@@ -11,7 +11,6 @@ const Turn = ({currPlayer, players, turnIndex}) => {
     return ( 
         <Box
             sx={{
-            marginTop: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -21,7 +20,7 @@ const Turn = ({currPlayer, players, turnIndex}) => {
             <Typography variant="h5" color="text.secondary" sx={{p : 2}}>
                     You're Up  
             </Typography>
-            <Chip sx={{mb : 2}} avatar={<Avatar>{currPlayer.displayName[0]}</Avatar>} label={currPlayer.displayName} />
+            <Chip sx={{mb : 2}} avatar={<Avatar sx={{ bgcolor: "background.paper", color: "text.primary" }} >{currPlayer.displayName[0]}</Avatar>} label={currPlayer.displayName} color="success" />
             <Typography  color="text.secondary" >
                      Next Up  
             </Typography>

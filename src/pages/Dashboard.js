@@ -90,8 +90,7 @@ const Dashboard = ({history}) => {
           sx={{
             bgcolor: 'background.paper',
             height: "100vh",
-            pt: 8,
-            pb: 6,
+            pt: 5,
             backgroundImage: "url('https://images.unsplash.com/photo-1506748566756-07746caecd61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')",
             backgroundSize: "cover"
            
@@ -108,7 +107,7 @@ const Dashboard = ({history}) => {
               Time to Go Deeper.
             </Typography>
             <Typography align="center" color="text.secondary" paragraph>
-               Help form stronger bonds with your friends. Play in any group setting. Read the rules before you begin, and then have one person kick off the game. 
+               Form stronger bonds with your friends. Play in any group setting. Read the rules before you begin, and then have one person kick off the game. 
             </Typography>
             <Paper sx={{ mt: 4 }} elevation={24}>
                 <Stack
@@ -119,7 +118,7 @@ const Dashboard = ({history}) => {
                     
                     <Button  onClick={() => handleOpenCreate()}  variant="contained" color='primary'>Create a Game</Button>
                     <Button onClick={() => handleOpenJoin()}  variant="contained" color='secondary'>Join a Game</Button>
-                    <Button component={RouterLink} to={"/question"} variant="outlined" color="info">View Rules</Button>  
+                    <Button component={RouterLink} to={"/question"} variant="outlined" color='primary'>View Rules</Button>  
                 </Stack>
             </Paper>
           </Container>

@@ -17,6 +17,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const style = {
     p: 4,
+    bgcolor: 'background.paper',
+    height: "100vh", 
 };
 
 const StyledFab = styled(Fab)({
@@ -93,6 +95,7 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
       
     }
 
+    
     return ( 
 
         <Box sx={style}>
@@ -129,7 +132,7 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
             </Box>
             <Box
                 sx={{
-                marginTop: 2,
+                marginTop: 3,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -137,7 +140,7 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
             >
                 {enableStart ? 
                     <>
-                        <Typography variant="h6" align="center" color="text.secondary" paragraph>
+                        <Typography sx={{mb: 0}} variant="h6" align="center" color="text.secondary" paragraph>
                             Set Player Order
                         </Typography>
                         <PlayerList 
@@ -146,7 +149,7 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
                         /> 
                     </>:
                     <>
-                        <Typography variant="h6" align="center" color="text.secondary" paragraph>
+                        <Typography variant="h6" align="center" color="text.primary" paragraph>
                             Waiting for Players to Join.
                         </Typography>
                         <CircularProgress />

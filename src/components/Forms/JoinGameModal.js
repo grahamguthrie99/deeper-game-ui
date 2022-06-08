@@ -20,9 +20,9 @@ const style = {
   width: "100%", 
   bgcolor: '#000',
   boxShadow: 24,
-  backgroundImage: "url('https://images.unsplash.com/photo-1506712465535-e301badbc49d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')",
-  backgroundSize: "contain",
-  backgroundPosition: "center top",
+  backgroundImage: "url('https://media2.giphy.com/media/KfZHOqVdtzmMSLquhY/giphy.gif?cid=ecf05e47wpc9xtwxjh1ubx9f35rk8dypuji676kkncnds2pb&rid=giphy.gif&ct=s')",
+  backgroundSize: "fit",
+  backgroundPosition: "center bottom",
   backgroundRepeat: "no-repeat"
 };
 
@@ -59,7 +59,7 @@ const JoinGameModal = ({ open, handleClose, handleJoinGame }) => {
                         flexDirection: 'column',
                         alignItems: 'center',
                         p: 4, 
-                        mt: "50%", 
+                        mt: "30%", 
                       }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
