@@ -26,10 +26,12 @@ const QuestionCard = ({currQuestion}) => {
                 <Typography variant="h5" color="text.secondary" gutterBottom sx={{ pl:2, mt:2}}> 
                     Question:
                 </Typography>
-                <Typography variant="h4" component="div" color="text.primary" sx={{mb:2,  pl:2}}>
-                    {currQuestion.text}
-                </Typography>
-                {/* <Chip icon={QuestionIcons[currQuestion.type]} variant="outlined" label={QuestionTypes[currQuestion.type]} /> */}
+                
+                        <Typography variant="h4" component="div" color="text.primary" sx={{mb:2,  pl:2}}>
+                            {currQuestion.text}
+                        </Typography>
+                   
+               
                 <Box
                         sx={{
                         marginTop: 1,

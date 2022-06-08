@@ -4,11 +4,13 @@ import { doc, onSnapshot} from "firebase/firestore";
 import AnonQuestion from './AnonQuestion';
 import SecretQuestion from './SecretQuestion';
 import SkeletonPage from '../../../Loading/SkeletonPage';
+import { AuthContext } from "../../../../session/AuthContext";
 
 
 const InteractiveQuestion = ({game, currQuestion}) => {
 
     const firebase = useContext(FirebaseContext);
+    const { authState } = useContext(AuthContext);
     const [loading, setLoading] = useState(true); 
     const [questionMetadata, setQuestionMetadata] = useState(null); 
 
@@ -32,6 +34,7 @@ const InteractiveQuestion = ({game, currQuestion}) => {
     }, [game.id, currQuestion.id, firebase.db])
 
     if (questionMetadata == null) return <SkeletonPage />
+    if (authState == null) return <SkeletonPage />
     
     return ( <>
          {loading ?  <SkeletonPage /> : currQuestion.type === 4 ?  <AnonQuestion currQuestion={currQuestion} questionMetadata={questionMetadata}/> : 
