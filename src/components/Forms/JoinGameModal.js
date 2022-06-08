@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Avatar from '@mui/material/Avatar';
@@ -20,10 +21,10 @@ const style = {
   width: "100%", 
   bgcolor: '#000',
   boxShadow: 24,
-  backgroundImage: "url('https://media2.giphy.com/media/KfZHOqVdtzmMSLquhY/giphy.gif?cid=ecf05e47wpc9xtwxjh1ubx9f35rk8dypuji676kkncnds2pb&rid=giphy.gif&ct=s')",
-  backgroundSize: "fit",
+  backgroundImage: "url('https://media1.giphy.com/media/xuXwaBKovnr4UefUyn/giphy.gif?cid=ecf05e47oxy3zoq55dtww7wzlfwth0porbmq3xilk0dnqzjh&rid=giphy.gif&ct=s')",
+  backgroundSize: "fixed",
+  backgroundRepeat: "no-repeat",
   backgroundPosition: "center bottom",
-  backgroundRepeat: "no-repeat"
 };
 
 const StyledFab = styled(Fab)({
@@ -45,7 +46,6 @@ const JoinGameModal = ({ open, handleClose, handleJoinGame }) => {
 
 
     return (
-    <div>
         <Modal
         open={open}
         onClose={handleClose}
@@ -53,6 +53,7 @@ const JoinGameModal = ({ open, handleClose, handleJoinGame }) => {
         aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
+            <Container maxWidth="xs">
                 <Box
                     sx={{
                         display: 'flex',
@@ -100,9 +101,9 @@ const JoinGameModal = ({ open, handleClose, handleJoinGame }) => {
                         </StyledFab>
                     </Toolbar>
                 </AppBar>
+                </Container>
             </Box>
         </Modal>
-    </div>
   );
 }
 

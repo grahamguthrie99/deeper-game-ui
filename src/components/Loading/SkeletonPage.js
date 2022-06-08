@@ -5,7 +5,7 @@ import Skeleton from '@mui/material/Skeleton';
 
 const SkeletonPage = () => {
   return (
-    <Card sx={{  m: 2 }}>
+    <Card>
       <CardHeader
         title={
             <Skeleton

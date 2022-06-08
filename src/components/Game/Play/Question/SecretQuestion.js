@@ -3,11 +3,13 @@ import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { AuthContext } from "../../../../session/AuthContext";
+import SkeletonPage from '../../../Loading/SkeletonPage';
 
 
 const SecretQuestion = ({currQuestion, questionMetadata}) => {
 
     const { authState } = useContext(AuthContext);
+    if (questionMetadata.chameleon == null) return <SkeletonPage />
    
     return ( 
         <Box
@@ -23,15 +25,17 @@ const SecretQuestion = ({currQuestion, questionMetadata}) => {
             >
            {authState.user.uid !== questionMetadata.chameleon.uid ? 
                 <CardContent sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    flexGrow: 1, 
-                    alignItems: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        flexGrow: 1, 
+                        width: "100%", 
+                        alignItems: 'center',
+                        p:0
                     }}>
-                    <Typography variant="h4" color="text.secondary" component="div"  sx={{mb:2, textAlign: "center"}} >
+                    <Typography sx={{ fontSize: 16,  my:1, textAlign: "center" }} color="text.secondary" component="div" >
                         You have the secret word: 
                     </Typography>
-                    <Typography variant="h2" component="div" sx={{mb:2}}  color="text.primary">
+                    <Typography variant="h2" component="div" sx={{mb:2, textAlign: "center"}}  color="text.primary">
                         {currQuestion.text}
                     </Typography>
                     <Box
@@ -40,7 +44,7 @@ const SecretQuestion = ({currQuestion, questionMetadata}) => {
                         width: "100%", 
                         backgroundImage: "url('https://i.giphy.com/media/JRD9kU93V4nZlNCL1g/giphy.webp')",
                         backgroundSize: "fixed",
-                        backgroundRepeat: "repeat-x",
+                        backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
                     
                         }}
@@ -52,7 +56,7 @@ const SecretQuestion = ({currQuestion, questionMetadata}) => {
                     flexGrow: 1,
                     alignItems: 'center',
                     }}>
-                    <Typography variant="h3" component="div" sx={{mb:2, textAlign: "center"}} color="text.primary">
+                    <Typography variant="h2" component="div" sx={{mb:2, textAlign: "center"}} color="text.primary">
                         You are the Chameleon!
                     </Typography>
                     <Box

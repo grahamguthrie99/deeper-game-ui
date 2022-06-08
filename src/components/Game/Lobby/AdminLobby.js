@@ -3,6 +3,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import { FirebaseContext } from "../../../firebase/FirebaseContext";
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { updateDoc, doc } from "firebase/firestore"; 
@@ -16,9 +17,13 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 
 const style = {
-    p: 4,
+    position: 'relative',
+    top: "0px", 
+    height: "100%",
+    width: "100%", 
     bgcolor: 'background.paper',
-    height: "100vh", 
+    display: "flex", 
+    alignItems: "start"
 };
 
 const StyledFab = styled(Fab)({
@@ -99,9 +104,11 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
     return ( 
 
         <Box sx={style}>
+            <Container maxWidth="xs" sx={{flexGrow: 1}}>
             <Box
                 sx={{
                 marginTop: 2,
+                p:2, 
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -168,6 +175,7 @@ const AdminLobby = ({game, gameId, setStart, questions}) => {
                     </StyledFab>
                 </Toolbar>
             </AppBar>
+            </Container>
      </Box>
         
           

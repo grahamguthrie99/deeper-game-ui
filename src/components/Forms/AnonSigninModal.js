@@ -4,6 +4,7 @@ import Button from "@mui/material/Button"
 import Avatar from '@mui/material/Avatar';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import VpnKeyRoundedIcon from '@mui/icons-material/VpnKeyRounded';
 
@@ -46,6 +47,7 @@ const AnonSigninModal = ({ history, open, setOpen, actions }) => {
       aria-describedby="modal-modal-description"
       >
           <Box sx={style}>
+          <Container maxWidth="xs">
           <Box
             sx={{
               display: 'flex',
@@ -90,6 +92,7 @@ const AnonSigninModal = ({ history, open, setOpen, actions }) => {
               </Button>
             </Box>
           </Box>
+          </Container>
         </Box>
       </Modal>
   )

@@ -26,7 +26,7 @@ const OffControl = ({qMaster, game}) => {
             <Box sx={{ width: 100 }}>
                 <LinearProgress />
             </Box>
-            <SkipNextIcon  />   
+            <SkipNextIcon sx={{ ml: 1 }} />   
           </Fab>
       </Toolbar>
       </AppBar>

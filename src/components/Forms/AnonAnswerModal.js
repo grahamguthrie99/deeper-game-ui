@@ -19,7 +19,7 @@ const style = {
     boxShadow: 24,
     backgroundImage: "url('https://media3.giphy.com/media/zxAoODXqWnEU3lUlnD/giphy.gif?cid=ecf05e47anq5img1sla5acp3mh3odvjr9zyu86eb87ij7klj&rid=giphy.gif&ct=s')",
     backgroundSize: "fixed",
-    backgroundRepeat: "repeat-x",
+    backgroundRepeat: "no-repeat",
     backgroundPosition: "center bottom",
   };
 

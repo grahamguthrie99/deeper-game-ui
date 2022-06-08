@@ -7,6 +7,19 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import AnonAnswerModal from '../../../Forms/AnonAnswerModal';
 import AnswersList from '../../../Lists/AnswersList';
+import SkeletonPage from '../../../Loading/SkeletonPage';
+import { motion } from "framer-motion"
+
+const textContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.5,
+      },
+      x: [200, 0]
+    }
+  }
 
 
 const AnonQuestion = ({currQuestion, questionMetadata}) => {
@@ -18,6 +31,8 @@ const AnonQuestion = ({currQuestion, questionMetadata}) => {
 
     const {answers} = questionMetadata; 
 
+    if (answers == null) return <SkeletonPage />
+
     return ( 
         <Box
                 sx={{
@@ -25,16 +40,21 @@ const AnonQuestion = ({currQuestion, questionMetadata}) => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                p:6
+                px:4
                 }}
             >
-            <CardContent>
+            <CardContent sx={{width: "100%"}}>
                 <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
-                    Question
+                    Question:
                 </Typography>
-                <Typography variant="h4" component="div" sx={{mb:2}} color="text.primary">
-                    {currQuestion.text}
-                </Typography>
+                <motion.div key={currQuestion.text} variants={textContainer}
+                    initial="hidden"
+                    animate="show"  > 
+                     <Typography variant="h4" component="div" sx={{mb:2, minHeight: "250px"}} color="text.primary">
+                    {currQuestion.text} 
+                            
+                    </Typography>
+                </motion.div>
                 <Stack
                 sx={{ pt: 4 }} 
                 spacing={2}
