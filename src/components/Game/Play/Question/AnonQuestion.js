@@ -50,7 +50,7 @@ const AnonQuestion = ({currQuestion, questionMetadata}) => {
                 <motion.div key={currQuestion.text} variants={textContainer}
                     initial="hidden"
                     animate="show"  > 
-                     <Typography variant="h4" component="div" sx={{mb:2, minHeight: "250px"}} color="text.primary">
+                     <Typography variant="h4" component="div" sx={{mb:2 }} color="text.primary">
                     {currQuestion.text} 
                             
                     </Typography>

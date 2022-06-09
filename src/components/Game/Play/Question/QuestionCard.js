@@ -35,7 +35,7 @@ const QuestionCard = ({currQuestion}) => {
             <motion.div key={currQuestion.text} variants={textContainer}
                 initial="hidden"
                 animate="show"  > 
-                <Typography sx={{ mt: 1, minHeight: "300px",  px: 4 }} variant="h5" component="div" color="text.primary">
+                <Typography sx={{ mt: 1, px: 4 }} variant="h5" component="div" color="text.primary">
                     {currQuestion.text}   
                 </Typography>
             </motion.div>
