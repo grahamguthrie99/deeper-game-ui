@@ -118,7 +118,7 @@ const Dashboard = ({history}) => {
                     
                     <Button  onClick={() => handleOpenCreate()}  variant="contained" color='primary'>Create a Game</Button>
                     <Button onClick={() => handleOpenJoin()}  variant="contained" color='secondary'>Join a Game</Button>
-                    <Button component={RouterLink} to={"/question"} variant="outlined" color='primary'>View Rules</Button>  
+                    <Button component={RouterLink} to={"/rules"} variant="outlined" color='primary'>View Rules</Button>  
                 </Stack>
             </Paper>
           </Container>

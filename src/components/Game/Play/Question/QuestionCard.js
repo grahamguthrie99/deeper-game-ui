@@ -16,6 +16,10 @@ const textContainer = {
   }
 
 const QuestionCard = ({currQuestion}) => {
+
+    function pickRandomGif(arr){
+      return arr[Math.floor(Math.random()*arr.length)]
+    }
    
     return ( 
         <Box
@@ -44,7 +48,7 @@ const QuestionCard = ({currQuestion}) => {
                     marginTop: 1,
                     height: "100%", 
                     width: "100%", 
-                    backgroundImage: QuestionGifs[currQuestion.type],
+                    backgroundImage: pickRandomGif(QuestionGifs[currQuestion.type]),
                     backgroundSize: "fixed",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
